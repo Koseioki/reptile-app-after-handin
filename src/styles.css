@@ -1,13 +1,21 @@
 /* ---------- Root Variables ---------- */
 :root {
-  --green: rgb(38, 76, 89);
+  /* --green: rgb(38, 76, 89);
   --dark-green: rgb(9, 47, 59);
   --light-green: rgb(172, 198, 201);
   --light-grey: #f1f1f4;
   --text-color-danger: #f44250;
   --text-color-dark: #333;
   --text-color-light: #f1f1f1;
-  --white: #f1f1f1;
+  --white: #f1f1f1; */
+  /* Kosei: transferring the colour palette from Figma */
+  --text: #1C1C1C;
+  --white: #ffffff;
+  --grey: #E5E5E5;
+  --green: #567845;
+  --brown: #6B4C35;
+  --light-green: #BBC9B5;
+
 }
 
 /* ---------- Global Styling ---------- */
@@ -23,10 +31,11 @@ html {
 
 body,
 html {
-  background-color: var(--light-green);
-  color: var(--text-color-dark);
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  background-color: var(--white);
+  color: var(--text);
+  font-family: "Nunito", sans-serif;
+  font-weight: regular;
+  font-size: 1rem;
   height: 100%;
   line-height: 1.5;
   margin: 0;
@@ -158,35 +167,63 @@ form {
 /* ---------- Navigation Styling ---------- */
 nav {
   background-color: var(--green);
-  display: grid;
-  left: 0;
+  /* display: grid; */
   position: fixed;
-  right: 0;
-  text-align: center;
-  top: 0;
+  /* bottom: 0; */
   padding: 1em 2em;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1em;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* gap: 1em; */
+}
+
+/* Kosei: responsive nav */
+@media (min-width: 40rem) {
+  nav {
+    top: 0;
+  }
+
+  /* nav a{
+    display: block;
+  } */
+}
+
+/* Kosei: move the nav to the bottom when smaller screens */
+@media (max-width: 40rem) {
+  nav {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+/* 
+  nav a {
+    display: inline-block;
+  } */
+  
 }
 
 nav a {
   display: inline-block;
-  color: var(--text-color-light);
+  color: var(--white);
   text-align: center;
   padding: 20px 16px;
   text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: 2px solid var(--green);
-  font-weight: 500;
-  font-size: 1.2em;
-  border-radius: 8px;
-  transition: 0.5s;
+  /* letter-spacing: 0.1em; */
+  /* text-transform: uppercase; */
+  /* border: 2px solid var(--green); */
+  /* font-weight: 500; */
+  font-size: 0.75rem;
+  /* border-radius: 8px; */
+  /* transition: 0.5s; */
+}
+.nav-dual-coding{
+  display: flex;
+  flex-direction: row;
+
 }
 
 nav a:hover {
   background-color: var(--light-green);
-  color: var(--green);
+  color: var(--white);
 }
 
 nav a.active {
@@ -196,7 +233,7 @@ nav a.active {
 
 /* ---------- Page Styling ---------- */
 .page {
-  animation: fadeIn 0.5s;
+  /* animation: fadeIn 0.5s; */
   padding: 140px 2em 2em;
 }
 
