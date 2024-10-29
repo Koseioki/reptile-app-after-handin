@@ -9,13 +9,12 @@
   --text-color-light: #f1f1f1;
   --white: #f1f1f1; */
   /* Kosei: transferring the colour palette from Figma */
-  --text: #1C1C1C;
+  --text: #1c1c1c;
   --white: #ffffff;
-  --grey: #E5E5E5;
+  --grey: #e5e5e5;
   --green: #567845;
-  --brown: #6B4C35;
-  --light-green: #BBC9B5;
-
+  --brown: #6b4c35;
+  --light-green: #bbc9b5;
 }
 
 /* ---------- Global Styling ---------- */
@@ -194,11 +193,10 @@ nav {
     right: 0;
     text-align: center;
   }
-/* 
+  /* 
   nav a {
     display: inline-block;
   } */
-  
 }
 
 nav a {
@@ -215,10 +213,16 @@ nav a {
   /* border-radius: 8px; */
   /* transition: 0.5s; */
 }
-.nav-dual-coding{
+/* Connor Nav Styling */
+.nav-dual-coding {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
+.nav-dual-coding img {
+  margin-bottom: 5px; /* Adjust the spacing between the icon and the text */
 }
 
 nav a:hover {
