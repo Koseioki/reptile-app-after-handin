@@ -41,6 +41,10 @@ html {
   padding: 0;
 }
 
+.drop-shadow{
+  box-shadow: 0 0.25rem 1rem hsla(0, 0%, 0%, 0.2);
+}
+
 /* ---------- Typography ---------- */
 h1 {
   font-size: 3.2em;
@@ -167,7 +171,7 @@ form {
 nav {
   background-color: var(--green);
   /* display: grid; */
-  position: fixed;
+  /* position: fixed; */
   /* bottom: 0; */
   padding: 1em 2em;
   /* grid-template-columns: 1fr 1fr 1fr; */
@@ -178,6 +182,8 @@ nav {
 @media (min-width: 40rem) {
   nav {
     top: 0;
+    /* position: fixed; */
+
   }
 
   /* nav a{
@@ -192,6 +198,8 @@ nav {
     left: 0;
     right: 0;
     text-align: center;
+    position: fixed;
+
   }
   /* 
   nav a {
@@ -238,7 +246,8 @@ nav a.active {
 /* ---------- Page Styling ---------- */
 .page {
   /* animation: fadeIn 0.5s; */
-  padding: 140px 2em 2em;
+  /* padding: 140px 2em 2em; */
+  padding: 1rem;
 }
 
 /* ---------- Container Styling ---------- */
@@ -248,13 +257,21 @@ nav a.active {
 }
 
 /* ---------- Grid Container Styling ---------- */
-.grid {
+.timeline-container{
+  display: flex;
+  justify-content: center;
+}
+.timeline {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1em;
+  gap: 1rem;
+  /* border: 1px solid red; */
+  width: 100%;
+  max-width: 40rem;
+
 }
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -264,7 +281,7 @@ nav a.active {
   .grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
-}
+} */
 
 .grid > .post-card {
   cursor: pointer;
@@ -295,13 +312,14 @@ nav a.active {
 
 /* ---------- Post Card Styling ---------- */
 .post-card {
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  padding: 1.5em;
+  /* box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25); */
+  padding: 1rem;
   background-color: var(--white);
-  transition: 0.5s;
-  animation: fadeIn 0.5s;
+  /* transition: 0.5s; */
+  /* animation: fadeIn 0.5s; */
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 0.75rem;
+  width: 100%;
 }
 
 .post-card:hover {
@@ -310,13 +328,14 @@ nav a.active {
 
 .post-card img {
   width: 100%;
-  height: 200px;
+  /* height: 200px; */
+  aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .post-card h2 {
-  margin: 0.5em 0 0;
+  margin: 1rem 0;
 }
 
 .post-card .title {
@@ -342,9 +361,12 @@ nav a.active {
 }
 
 .post-card .avatar img {
-  max-width: 50px;
-  max-height: 50px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 3rem;
+  aspect-ratio: 1/1;
+  /* max-width: 50px;
+  max-height: 50px; */
+  /* object-fit: cover; */
   border-radius: 50%;
 }
 
@@ -390,4 +412,12 @@ nav a.active {
   to {
     opacity: 1;
   }
+}
+
+/* Kosei: new reptile popup */
+.popup{
+  background-color: var(--light-green);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 1.25rem;
 }
