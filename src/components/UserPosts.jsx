@@ -6,9 +6,7 @@ export default function UserPosts({ uid }) {
 
   useEffect(() => {
     async function getPosts() {
-      const url = `${
-        import.meta.env.VITE_FIREBASE_DB_URL
-      }/posts.json?orderBy="uid"&equalTo="${uid}"`;
+      const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/posts.json?orderBy="uid"&equalTo="${uid}"`;
       // mTo make this work, you must create an index on "uid" in Firebase Realtime Database Rules
       const response = await fetch(url);
       const data = await response.json();
@@ -23,12 +21,14 @@ export default function UserPosts({ uid }) {
     }
   }, [uid]);
   return (
-    <section className="grid">
+    <section className="timeline-container">
+        <section className="timeline">
       {posts.length ? (
         posts.map(post => <PostCard post={post} key={post.id} />)
       ) : (
         <p>No posts yet</p>
       )}
+      </section>
     </section>
   );
 }
