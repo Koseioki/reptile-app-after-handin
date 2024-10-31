@@ -6,7 +6,7 @@ export default function UpdatePage() {
   const [post, setPost] = useState();
   const params = useParams();
   const navigate = useNavigate();
-  const url = `${import.meta.env.VITE_FIREBASE_DB_URL}/posts/${
+  const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/posts/${
     params.postId
   }.json`;
 

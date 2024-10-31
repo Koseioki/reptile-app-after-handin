@@ -7,7 +7,7 @@ export default function HomePage() {
 
   useEffect(() => {
     async function getPosts() {
-      const url = `${import.meta.env.VITE_FIREBASE_DB_URL}/posts.json`;
+      const url = "https://reptile-app-ebad6-default-rtdb.firebaseio.com/posts.json";
       const response = await fetch(url);
       const data = await response.json();
       const postsArray = Object.keys(data).map(key => ({

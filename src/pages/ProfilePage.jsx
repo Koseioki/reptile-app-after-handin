@@ -9,7 +9,7 @@ export default function ProfilePage() {
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const url = `${import.meta.env.VITE_FIREBASE_DB_URL}/users/${
+  const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/users/${
     auth.currentUser?.uid
   }.json`;
   const fileInputRef = useRef(null);
