@@ -41,7 +41,7 @@ html {
   padding: 0;
 }
 
-.drop-shadow{
+.drop-shadow {
   box-shadow: 0 0.25rem 1rem hsla(0, 0%, 0%, 0.2);
 }
 
@@ -183,7 +183,6 @@ nav {
   nav {
     top: 0;
     /* position: fixed; */
-
   }
 
   /* nav a{
@@ -199,7 +198,6 @@ nav {
     right: 0;
     text-align: center;
     position: fixed;
-
   }
   /* 
   nav a {
@@ -257,7 +255,7 @@ nav a.active {
 }
 
 /* ---------- Grid Container Styling ---------- */
-.timeline-container{
+.timeline-container {
   display: flex;
   justify-content: center;
 }
@@ -268,7 +266,6 @@ nav a.active {
   /* border: 1px solid red; */
   width: 100%;
   max-width: 40rem;
-
 }
 
 /* @media (min-width: 600px) {
@@ -415,9 +412,58 @@ nav a.active {
 }
 
 /* Kosei: new reptile popup */
-.popup{
+.popup {
   background-color: var(--light-green);
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 1.25rem;
+}
+
+/* Connor here peeps */
+.post-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  position: relative;
+}
+
+.post-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.hashtags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag {
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.post-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.post-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
 }
