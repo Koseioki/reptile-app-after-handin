@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import { useEffect, useRef, useState } from "react";
 import UserPosts from "../components/UserPosts";
 import { auth } from "../firebase-config";
+import UserAvatar from "../components/UserAvatar";
 
 export default function ProfilePage() {
   const [name, setName] = useState("");
@@ -76,6 +77,8 @@ export default function ProfilePage() {
     <section className="page">
       <div className="container">
         <h1>Profile</h1>
+        <UserAvatar uid={auth.currentUser?.uid} />
+    
         <form className="form-grid" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input
