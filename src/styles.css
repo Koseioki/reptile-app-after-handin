@@ -467,3 +467,12 @@ nav a.active {
   width: 20px;
   height: 20px;
 }
+
+/* search bar */
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

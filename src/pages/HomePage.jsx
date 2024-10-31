@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import NewReptileOwnerPopup from "../components/NewReptileOwnerPopup";
+import SearchBar from "../components/SearchBar";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
     async function getPosts() {
@@ -16,18 +18,26 @@ export default function HomePage() {
         ...data[key],
       })); // from object to array
       setPosts(postsArray);
+      setFilteredPosts(postsArray);
     }
     getPosts();
   }, []);
 
+  const handleSearch = (query) => {
+    const filtered = posts.filter((post) =>
+      post.caption.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredPosts(filtered);
+  };
+
   return (
     <section className="page">
       <h1>Home</h1>
+      <SearchBar onSearch={handleSearch} />
       <NewReptileOwnerPopup />
-      {/* Kosei: put timeline-container outside of timeline to centre the content */}
       <section className="timeline-container">
         <section className="timeline">
-          {posts.map((post) => (
+          {filteredPosts.map((post) => (
             <PostCard post={post} key={post.id} />
           ))}
         </section>
