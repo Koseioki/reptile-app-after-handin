@@ -45,21 +45,25 @@ export default function PostDetailPage() {
                     {/* show the post */}
                     {post && <PostCard post={post} />}
 
+
                     {/* show the comments */}
                     <section className="comments">
                         <h2>Comments</h2>
-                        
+
+                        <article className="post-card">
                             {comments.map((comment, index) => (
                                 <div key={index}>
-                                    
-                                    
-                                    {/* <UserAvatar uid={comment.userId} /> */}
-                                    <p>{comment.userId}</p>
-
+                                    <UserAvatar uid={comment.userId} />
+                                    {/* <p>{comment.userId}</p> */}
+                                    <p>{Date(comment.createdAt)}</p>
                                     <p>{comment.comment}</p>
+
                                 </div>
                             ))}
-                        
+
+
+                        </article>
+
                     </section>
 
                 </section>

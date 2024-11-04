@@ -357,13 +357,14 @@ nav a.active {
   line-height: 1.2;
 }
 
-.post-card .avatar img {
+.post-card .avatar img,
+.avatar-image{
   width: 100%;
   max-width: 3rem;
   aspect-ratio: 1/1;
   /* max-width: 50px;
   max-height: 50px; */
-  /* object-fit: cover; */
+  object-fit: cover;
   border-radius: 50%;
 }
 

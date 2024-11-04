@@ -20,10 +20,10 @@ export default function UserAvatar({ uid }) {
 
     return (
         <div className="avatar">
-            <img src={user.image || placerholder} alt={user.id} />
+            <img className="avatar-image" src={user.image || placerholder} alt={user.id} />
             <span>
                 <h3>@{user.name}</h3>
-                <p>{user.title}</p>
+                {/* <p>{user.title}</p> */}
             </span>
         </div>
     );

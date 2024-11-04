@@ -13,8 +13,10 @@ export default function PostCard({ post }) {
   return (
     <article onClick={handleClick} className="post-card drop-shadow">
       <UserAvatar uid={post.uid} />
+      <p>{Date(post.createdAt)}</p>
+      
+      <p>{post.caption}</p>
       <img src={post.image} alt={post.caption} />
-      <h3>{post.caption}</h3>
       <div className="post-footer">
         <div className="hashtags">
           {post.tags && post.tags.length > 0 ? ( //i figured shit out (Connor) it shows! Testngcomment
