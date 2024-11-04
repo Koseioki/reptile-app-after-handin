@@ -2,6 +2,7 @@ import PostCard from "../components/PostCard";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UserAvatar from "../components/UserAvatar";
+import CommentForm from "../components/CommentForm";
 
 // Kosei: post detail page for comments
 export default function PostDetailPage() {
@@ -35,6 +36,7 @@ export default function PostDetailPage() {
         }
 
         getPost();
+        // console.log(params.postId);
     }, [params.postId, postUrl, commentsBaseUrl]);
 
     return (
@@ -44,8 +46,9 @@ export default function PostDetailPage() {
 
                     {/* show the post */}
                     {post && <PostCard post={post} />}
-
-
+                    {/* show the comment section */}
+                    {/* send CommentForm the ID of this post */}
+                    <CommentForm postId={params.postId} />
                     {/* show the comments */}
                     <section className="comments">
                         <h2>Comments</h2>
