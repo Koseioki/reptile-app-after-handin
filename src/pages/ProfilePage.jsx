@@ -1,3 +1,4 @@
+// ProfilePage.js
 import { signOut } from "firebase/auth";
 import { useEffect, useRef, useState } from "react";
 import UserPosts from "../components/UserPosts";
@@ -7,12 +8,11 @@ import UserAvatar from "../components/UserAvatar";
 export default function ProfilePage() {
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
+  const [bio, setBio] = useState(""); // Added state for bio
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/users/${
-    auth.currentUser?.uid
-  }.json`;
+  const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/users/${auth.currentUser?.uid}.json`;
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -21,54 +21,63 @@ export default function ProfilePage() {
       const userData = await response.json();
 
       if (userData) {
-        // if userData exists set states with values from userData (data from firestore)
+        // Set states with values from userData (data from Firebase)
         setName(userData.name);
         setEmail(auth.currentUser?.email);
         setTitle(userData.title || "");
+        setBio(userData.bio || ""); // Set bio state
         setImage(userData.image);
       }
     }
     getUser();
-  }, [url]); // dependencies: useEffect is executed when url changes
+  }, [url]);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const userToUpdate = { name, mail: email, title, image }; // create an object to hold the user to update properties
-    console.log(userToUpdate);
+    const userToUpdate = {
+      name,
+      mail: email,
+      title,
+      bio, // Include bio in the user object
+      image,
+    };
 
-    const response = await fetch(url, {
-      method: "PUT",
-      body: JSON.stringify(userToUpdate)
-    });
-    if (response.ok) {
-      const data = await response.json();
-      console.log("User updated: ", data);
-    } else {
-      console.log("Sorry, something went wrong");
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify(userToUpdate),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("User updated: ", data);
+        // Optionally, display a success message to the user
+      } else {
+        console.error("Failed to update user");
+        // Optionally, handle the error
+      }
+    } catch (error) {
+      console.error("Error updating user:", error);
+      // Optionally, handle the error
     }
   }
 
   function handleSignOut() {
-    signOut(auth); // sign out from firebase/auth
+    signOut(auth); // Sign out from Firebase Auth
   }
 
-  /**
-   * handleImageChange is called every time the user chooses an image in the fire system.
-   * The event is fired by the input file field in the form
-   */
   function handleImageChange(event) {
     const file = event.target.files[0];
     if (file.size < 500000) {
-      // image file size must be below 0,5MB
+      // Image file size must be below 0.5MB
       const reader = new FileReader();
-      reader.onload = event => {
+      reader.onload = (event) => {
         setImage(event.target.result);
       };
       reader.readAsDataURL(file);
-      setErrorMessage(""); // reset errorMessage state
+      setErrorMessage(""); // Reset errorMessage state
     } else {
-      // if not below 0.5MB display an error message using the errorMessage state
+      // If not below 0.5MB, display an error message
       setErrorMessage("The image file is too big!");
     }
   }
@@ -78,14 +87,14 @@ export default function ProfilePage() {
       <div className="container">
         <h1>Profile</h1>
         <UserAvatar uid={auth.currentUser?.uid} />
-    
+
         <form className="form-grid" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input
             id="name"
             type="text"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             name="name"
             placeholder="Type name"
           />
@@ -94,7 +103,7 @@ export default function ProfilePage() {
           <input
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             name="email"
             placeholder="Type email"
             disabled
@@ -105,9 +114,19 @@ export default function ProfilePage() {
             id="title"
             type="text"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             name="title"
             placeholder="Type your title"
+          />
+
+          <label htmlFor="bio">Bio</label>
+          <textarea
+            id="bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            name="bio"
+            placeholder="Tell us about yourself"
+            rows="4"
           />
 
           <label htmlFor="image">Image</label>
@@ -120,7 +139,7 @@ export default function ProfilePage() {
                 : "https://placehold.co/600x400?text=Click+here+to+select+an+image"
             }
             alt="Choose"
-            onError={e =>
+            onError={(e) =>
               (e.target.src =
                 "https://placehold.co/600x400?text=Error+loading+image")
             }
@@ -138,7 +157,7 @@ export default function ProfilePage() {
             <p>{errorMessage}</p>
           </div>
           <div className="btns">
-            <button>Save User</button>
+            <button type="submit">Save User</button>
           </div>
         </form>
         <div className="btns">
