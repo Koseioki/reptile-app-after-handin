@@ -17,7 +17,7 @@ export default function PostCard({ post }) {
       <h3>{post.caption}</h3>
       <div className="post-footer">
         <div className="hashtags">
-          {post.tags && post.tags.length > 0 ? ( //i figured shit out (Connor) it shows!
+          {post.tags && post.tags.length > 0 ? ( //i figured shit out (Connor) it shows! Testngcomment
             post.tags.map((tag, index) => (
               <span key={index} className="tag">
                 #{tag}
