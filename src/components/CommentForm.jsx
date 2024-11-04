@@ -29,8 +29,11 @@ export default function CommentForm({postId}) {
 
             // Add the reference of the comment to the post's comments list
             await fetch(postUrl, {
-                method: "POST",
-                body: JSON.stringify({ [commentId]: "true" })
+                method: "PATCH",
+                body: JSON.stringify({ [commentId]: "true" }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
             });
 
         } else {
