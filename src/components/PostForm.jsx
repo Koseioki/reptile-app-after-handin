@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 export default function PostForm({ savePost, post }) {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
+  const [altText, setAltText] = useState("");
+  const [tags, setTags] = useState("");
+  const [reptiles, setReptiles] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const fileInputRef = useRef(null);
@@ -13,6 +16,9 @@ export default function PostForm({ savePost, post }) {
       // The post object is a prop, passed from UpdatePage
       setCaption(post.caption);
       setImage(post.image);
+      setAltText(post.altText);
+      setTags(post.tags);
+      setReptiles(post.reptiles);
     }
   }, [post]); // useEffect is called every time post changes.
 
@@ -41,10 +47,16 @@ export default function PostForm({ savePost, post }) {
     const formData = {
       // create a new objebt to store the value from states / input fields
       caption: caption,
-      image: image
+      image: image,
+      altText: altText,
+      tags: {
+        0:reptiles,
+        1:tags
+      }
     };
 
-    const validForm = formData.caption && formData.image; // will return false if one of the properties doesn't have a value
+
+    const validForm = formData.caption && formData.image && formData.altText; // will return false if one of the properties doesn't have a value
     if (validForm) {
       // if all fields/ properties are filled, then call savePost
       savePost(formData);
@@ -56,6 +68,32 @@ export default function PostForm({ savePost, post }) {
 
   return (
     <form className="form-grid" onSubmit={handleSubmit}>
+      {/* Kosei: add tags to the post */}
+      <label htmlFor="reptiles">Reptiles</label>
+      <select id="reptiles" name="reptiles" value={reptiles} onChange={e => setReptiles(e.target.value)}>
+        <option value="all-reptiles">All Reptiles</option>
+        <option value="pythons">Pythons</option>
+        <option value="ball-pythons">Ball Pythons</option>
+        <option value="colubrids">Colubrids</option>
+        <option value="geckos">Geckos</option>
+        <option value="lizards">Lizards</option>
+        <option value="other-reptiles">Other Reptiles</option>
+        
+      </select>
+
+      <label htmlFor="tags">Tags</label>
+      <select id="tags" name="tags" value={tags} onChange={e => setTags(e.target.value)}>
+      <option value="no-tags">no-tags</option>
+
+        <option value="for-fun">for-fun</option>
+        <option value="genetics">genetics</option>
+        <option value="hatchlings">hatchlings</option>
+        <option value="health">health</option>
+        <option value="heat">heat</option>
+        <option value="help">help</option>
+        <option value="husbandry">husbandry</option>
+      </select>
+
       <label htmlFor="caption">Caption</label>
       <input
         id="caption"
@@ -77,8 +115,8 @@ export default function PostForm({ savePost, post }) {
         }
         alt="Choose"
         onError={e =>
-          (e.target.src =
-            "https://placehold.co/600x400?text=Error+loading+image")
+        (e.target.src =
+          "https://placehold.co/600x400?text=Error+loading+image")
         }
         onClick={() => fileInputRef.current.click()}
       />
@@ -90,6 +128,19 @@ export default function PostForm({ savePost, post }) {
         onChange={handleImageChange}
         ref={fileInputRef}
       />
+
+      {/* Kosei: add alt text */}
+      <label htmlFor="alt-text">Alt text</label>
+      <input
+        id="alt-text"
+        name="alt-text"
+        type="text"
+        value={altText}
+        aria-label="alt-text"
+        placeholder="Write an alt text..."
+        onChange={e => setAltText(e.target.value)}
+      />
+
       <div className="error-message">
         <p>{errorMessage}</p>
       </div>

@@ -16,7 +16,7 @@ export default function PostCard({ post }) {
       <p>{Date(post.createdAt)}</p>
       
       <p>{post.caption}</p>
-      <img src={post.image} alt={post.caption} />
+      <img src={post.image} alt={post.altText} />
       <div className="post-footer">
         <div className="hashtags">
           {post.tags && post.tags.length > 0 ? ( //i figured shit out (Connor) it shows! Testngcomment
