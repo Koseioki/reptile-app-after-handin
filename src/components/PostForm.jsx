@@ -52,7 +52,8 @@ export default function PostForm({ savePost, post }) {
       tags: {
         0:reptiles,
         1:tags
-      }
+      },
+      createdAt: Date.now()
     };
 
 
