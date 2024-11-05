@@ -22,19 +22,18 @@ export default function PostDetailPage() {
       const postData = await response.json();
       postData.id = params.postId;
 
-      // Initialize likes and isLiked if they don't exist
-      if (postData.likes === undefined) postData.likes = 0;
-      if (postData.isLiked === undefined) postData.isLiked = false;
+      // Initialize likedBy array if it doesn't exist
+      if (!postData.likedBy) postData.likedBy = [];
 
-      setPost(postData);
+      // Determine if the current user has liked the post
+      const isLiked = postData.likedBy.includes(currentUserId);
 
-      // Only call getComments if there are comments
-      if (postData.comments) {
-        getComments(postData.comments);
-      } else {
-        setComments([]); // Ensure comments state is empty if no comments
-      }
+      // Set the post state with isLiked and likes count
+      setPost({ ...postData, isLiked, likes: postData.likedBy.length });
+
+      // Fetch comments as before...
     }
+
 
     async function getComments(commentIds) {
       const commentKeys = Object.keys(commentIds);
@@ -47,39 +46,49 @@ export default function PostDetailPage() {
       setComments(commentsData);
     }
 
+
     getPost();
   }, [params.postId, postUrl, commentsBaseUrl]);
 
   const handleLike = async () => {
     if (!post) return;
 
-    // Toggle the isLiked status
-    const updatedIsLiked = !post.isLiked;
+    let updatedLikedBy = [...post.likedBy];
+    let updatedIsLiked = false;
 
-    // Update likes count
-    const updatedLikes = updatedIsLiked ? post.likes + 1 : post.likes - 1;
+    if (post.isLiked) {
+      // User is unliking the post
+      updatedLikedBy = updatedLikedBy.filter((uid) => uid !== currentUserId);
+    } else {
+      // User is liking the post
+      updatedLikedBy.push(currentUserId);
+      updatedIsLiked = true;
+    }
 
-    // Create the updated post object
     const updatedPost = {
       ...post,
+      likedBy: updatedLikedBy,
       isLiked: updatedIsLiked,
-      likes: updatedLikes,
+      likes: updatedLikedBy.length,
     };
 
-    // Update the post in Firebase
     try {
       await fetch(postUrl, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedPost),
+        body: JSON.stringify({
+          ...updatedPost,
+          isLiked: undefined,
+          likes: undefined,
+        }),
       });
 
-      // Update the post state after successful update
       setPost(updatedPost);
     } catch (error) {
       console.error("Error updating likes:", error);
     }
   };
+
 
   // Function to delete a comment
   const deleteComment = async (commentId) => {
@@ -87,7 +96,7 @@ export default function PostDetailPage() {
       return;
     }
     try {
-      // Delete the comment from the comments node
+      // Delete the comment from the comments collection
       await fetch(`${commentsBaseUrl}${commentId}.json`, {
         method: "DELETE",
       });
@@ -96,23 +105,26 @@ export default function PostDetailPage() {
       const updatedComments = { ...post.comments };
       delete updatedComments[commentId];
 
-      // Update the post in Firebase
-      const updatedPost = { ...post, comments: updatedComments };
+      // Update the post's comments in Firebase
       await fetch(postUrl, {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedPost),
+        body: JSON.stringify({ comments: updatedComments }),
       });
 
-      // Update the post state
-      setPost(updatedPost);
-
-      // Update the comments state
-      setComments(comments.filter((comment) => comment.id !== commentId));
+      // Update the local state
+      setPost((prevPost) => ({
+        ...prevPost,
+        comments: updatedComments,
+      }));
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment.id !== commentId)
+      );
     } catch (error) {
       console.error("Error deleting comment:", error);
     }
   };
+
 
   return (
     <section className="page" id="main-content">

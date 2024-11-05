@@ -11,6 +11,9 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UpdatePage from "./pages/UpdatePage";
 import PostDetailPage from "./pages/PostDetailPage";
+import InfoPage from "./pages/InfoPage";
+import DiscoverPage from "./pages/DiscoverPage";
+
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
@@ -38,6 +41,8 @@ export default function App() {
         <Route path="/create" element={<CreatePage />} />
         <Route path="/posts/:postId" element={<PostDetailPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/info" element={<InfoPage />} />
+        <Route path="/discover" element={<DiscoverPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

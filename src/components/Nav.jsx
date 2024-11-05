@@ -18,7 +18,7 @@ export default function Nav() {
           <span>Home</span>
         </div>
       </NavLink>
-      <NavLink to="/create">
+      <NavLink to="/discover">
         <div className="nav-dual-coding">
           <img src={discover} alt="Discover Icon" />
           <span>Discover</span>
@@ -30,7 +30,7 @@ export default function Nav() {
           <span>Post</span>
         </div>
       </NavLink>
-      <NavLink to="/profile">
+      <NavLink to="/info">
         <div className="nav-dual-coding">
           <img src={info} alt="Info Icon" />
           <span>Info</span>

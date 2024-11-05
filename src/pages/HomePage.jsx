@@ -4,7 +4,6 @@ import PostCard from "../components/PostCard";
 import NewReptileOwnerPopup from "../components/NewReptileOwnerPopup";
 import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter"; // Ensure this is the correct import path
-import FeedbackForm from "../components/FeedbackForm"; // Ensure this is the correct import path
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -21,6 +20,7 @@ export default function HomePage() {
     { value: "Snake", label: "Snake" },
     { value: "Lizard", label: "Lizard" },
     { value: "Gecko", label: "Gecko" },
+    { value: "Users I follow", label: "Users I follow" },
   ];
 
   const tagOptions = [
@@ -80,24 +80,12 @@ export default function HomePage() {
     setTagFilter(selectedOption);
   };
 
-  // Handler for feedback submission
-  const handleFeedbackSubmit = (feedback) => {
-    console.log("Feedback submitted:", feedback);
-    // You can send the feedback to your server here using fetch or axios
-    // For example:
-    // fetch('/api/feedback', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ feedback }),
-    // });
-  };
-
   return (
     <section className="page" id="main-content">
       <h1>Home</h1>
       <SearchBar onSearch={handleSearch} />
       <Filter
-        label="Reptile Filter"
+        label="Posts Filter"
         options={reptileOptions}
         onFilterChange={onReptileFilterChange}
       />
@@ -114,8 +102,7 @@ export default function HomePage() {
           ))}
         </section>
       </section>
-      {/* Include the FeedbackForm component */}
-      <FeedbackForm onSubmit={handleFeedbackSubmit} />
+      {/* FeedbackForm has been moved to InfoPage */}
     </section>
   );
 }
