@@ -23,7 +23,7 @@ export default function CreatePage() {
   }
 
   return (
-    <section className="page">
+    <section className="page" id="main-content">
       <div className="container">
         <h1>Create New Post</h1>
         <PostForm savePost={createPost} />

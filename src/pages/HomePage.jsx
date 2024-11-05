@@ -93,7 +93,7 @@ export default function HomePage() {
   };
 
   return (
-    <section className="page">
+    <section className="page" id="main-content">
       <h1>Home</h1>
       <SearchBar onSearch={handleSearch} />
       <Filter

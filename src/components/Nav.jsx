@@ -7,6 +7,10 @@ import profile from "../images/profile.svg";
 
 export default function Nav() {
   return (
+    <>
+    <a className="skip-button" href="#main-content">
+      Skip to Content
+    </a>
     <nav>
       <NavLink to="/">
         <div className="nav-dual-coding">
@@ -39,5 +43,6 @@ export default function Nav() {
         </div>
       </NavLink>
     </nav>
+    </>
   );
 }

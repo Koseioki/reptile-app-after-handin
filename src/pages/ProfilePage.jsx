@@ -83,7 +83,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <section className="page">
+    <section className="page" id="main-content">
       <div className="container">
         <h1>Profile</h1>
         <UserAvatar uid={auth.currentUser?.uid} />

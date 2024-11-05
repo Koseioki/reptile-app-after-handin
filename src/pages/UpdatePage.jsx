@@ -56,7 +56,7 @@ export default function UpdatePage() {
   }
 
   return (
-    <section className="page">
+    <section className="page" id="main-content">
       <div className="container">
         <h1>Update Post</h1>
         <PostForm post={post} savePost={savePost} />

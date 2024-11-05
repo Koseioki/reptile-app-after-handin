@@ -115,7 +115,7 @@ export default function PostDetailPage() {
   };
 
   return (
-    <section className="page">
+    <section className="page" id="main-content">
       <section className="timeline-container">
         <section className="timeline">
           {/* Show the post */}
