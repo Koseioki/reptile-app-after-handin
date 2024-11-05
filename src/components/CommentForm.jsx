@@ -8,6 +8,7 @@ export default function CommentForm({postId}) {
     async function postComment(newComment) {
         newComment.userId = auth.currentUser.uid;
         newComment.postId = postId;
+        newComment.createdAt = Date.now();
         // add comment to the comment tree
         const commentUrl="https://reptile-app-ebad6-default-rtdb.firebaseio.com/comments.json";
 
