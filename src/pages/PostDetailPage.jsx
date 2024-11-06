@@ -1,16 +1,10 @@
-// PostDetailPage.js
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import UserAvatar from "../components/UserAvatar";
 import CommentForm from "../components/CommentForm";
-// import { auth } from "../firebase-config"; // Import auth to get the current user
 
 export default function PostDetailPage() {
-
-
-  // Kosei: post detail page for comments
-
   const [post, setPost] = useState();
   const [comments, setComments] = useState([]);
   const params = useParams();
@@ -24,34 +18,55 @@ export default function PostDetailPage() {
       const postData = await response.json();
       postData.id = params.postId;
       setPost(postData);
-      // console.log(postData.comments); // Kosei: this is the comments array (all the comments of this posts)
       getComments(postData.comments);
     }
 
     async function getComments(commentIds) {
-      // Kosei: commendIds has the keys of the comments to this post
-      // Kosei: and this function does the loop thingy to get all the comments
-      // console.log(commentIds);
       const commentKeys = Object.keys(commentIds);
-      // console.log(commentKeys);
-      const commentsPromises = commentKeys.map(key => fetch(commentsBaseUrl + key + ".json").then(res => res.json()));
+
+      const commentsPromises = commentKeys.map(key => 
+        fetch(commentsBaseUrl + key + ".json").then(res => res.json().then(data => ({ ...data, key })))
+      );
+      
       const commentsData = await Promise.all(commentsPromises);
       setComments(commentsData);
     }
 
     getPost();
-    // console.log(params.postId);
   }, [params.postId, postUrl, commentsBaseUrl]);
 
+  // Kosei: Delete comment from the both comments and posts trees
   async function handleDelete(comment) {
-    // I want to delete a comment here
-    console.log(comment);
-    
-    // 
-    // 
-    // 
-  }
+    try {
+      // Delete the comment from the comments node
+      await fetch(`${commentsBaseUrl}${comment.key}.json`, {
+        method: "DELETE",
+      });
 
+      //  Update the post's comments object
+      const updatedComments = { ...post.comments };
+      delete updatedComments[comment.key];  // Remove the comment ID from the post's comments list
+      
+      await fetch(postUrl, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ comments: updatedComments }),
+      });
+
+      // Update the local state to reflect the deletion??
+      setComments(comments.filter(c => c.key !== comment.key));
+      setPost(prevPost => ({
+        ...prevPost,
+        comments: updatedComments
+      }));
+      
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
+  }
+  
   return (
     <section className="page">
       <h1>Home</h1>
@@ -61,9 +76,7 @@ export default function PostDetailPage() {
           {/* show the post */}
           {post && <PostCard post={post} />}
           {/* show the comment section */}
-          {/* send CommentForm the ID of this post */}
           <CommentForm postId={params.postId} />
-
 
           {/* show the comments */}
           <section className="comments">
@@ -73,17 +86,12 @@ export default function PostDetailPage() {
               {comments.map((comment, index) => (
                 <div key={index}>
                   <UserAvatar uid={comment.userId} />
-                  {/* <p>{comment.userId}</p> */}
                   <p>{new Date(comment.createdAt).toLocaleDateString()}</p>
                   <p>{comment.comment}</p>
                   <button onClick={() => handleDelete(comment)}>Delete this comment</button>
-
                 </div>
               ))}
-
-
             </article>
-
           </section>
 
         </section>
