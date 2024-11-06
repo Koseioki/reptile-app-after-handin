@@ -1,10 +1,15 @@
-// PartnersCard.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const PartnersCard = () => {
+export default function PartnersCard() {
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/partners");
+  }
+
   return (
-    <div className="post-card">
+    <div className="post-card" onClick={handleClick}>
       <h2>Partners</h2>
       <p>
         We collaborate with partners that we trust and are verified to guarantee
@@ -12,6 +17,4 @@ const PartnersCard = () => {
       </p>
     </div>
   );
-};
-
-export default PartnersCard;
+}

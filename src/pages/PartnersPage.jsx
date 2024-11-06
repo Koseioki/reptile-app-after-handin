@@ -1,5 +1,5 @@
 // PartnersPage.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PartnersPage() {
   const [partners, setPartners] = useState([]);
@@ -19,15 +19,15 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div className="partners-page">
+    <div className="vets-page">
       <h1>Our Trusted Partners</h1>
-      <div className="partners-list">
+      <div className="vets-list">
         {partners.map((partner) => (
-          <div key={partner.id} className="partner-card">
+          <div key={partner.id} className="vet-card">
             <img
               src={partner.image}
               alt={partner.name}
-              className="partner-image"
+              className="vet-image"
             />
             <h2>{partner.name}</h2>
             <a
