@@ -1,6 +1,8 @@
+// PartnersCard.js
 import React from "react";
+import { Link } from "react-router-dom";
 
-const StepByStepGuideCard = () => {
+const PartnersCard = () => {
   return (
     <div className="post-card">
       <h2>Partners</h2>
@@ -12,4 +14,4 @@ const StepByStepGuideCard = () => {
   );
 };
 
-export default StepByStepGuideCard;
+export default PartnersCard;

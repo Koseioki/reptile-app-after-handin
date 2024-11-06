@@ -13,8 +13,8 @@ import UpdatePage from "./pages/UpdatePage";
 import PostDetailPage from "./pages/PostDetailPage";
 import InfoPage from "./pages/InfoPage";
 import DiscoverPage from "./pages/DiscoverPage";
-import VetsPage from "./pages/VetsPage"; 
-import UserProfilePage from "./pages/UserProfilePage";
+import VetsPage from "./pages/VetsPage";
+import PartnersPage from "./pages/PartnersPage";
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
@@ -43,10 +43,10 @@ export default function App() {
         <Route path="/posts/:postId" element={<PostDetailPage />} />
         <Route path="/posts/:postId/edit" element={<UpdatePage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/:userId" element={<UserProfilePage />} />
         <Route path="/info" element={<InfoPage />} />
         <Route path="/discover" element={<DiscoverPage />} />
         <Route path="/vets" element={<VetsPage />} />
+        <Route path="/partners" element={<PartnersPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
