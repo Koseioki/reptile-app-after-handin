@@ -34,7 +34,7 @@ export default function PostCard({ post }) {
     <article onClick={handleClick} className="post-card drop-shadow">
       <UserAvatar uid={post.uid} />
       <p>{new Date(post.createdAt).toLocaleDateString()}</p>
-      
+      <a href={`/posts/${post.id}/edit`}>Edit this post</a>
       <p>{post.caption}</p>
       <img src={post.image} alt={post.altText} />
       <div className="post-footer">

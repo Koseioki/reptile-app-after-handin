@@ -40,6 +40,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/posts/:postId" element={<PostDetailPage />} />
+        <Route path="/posts/:postId/edit" element={<UpdatePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/info" element={<InfoPage />} />
         <Route path="/discover" element={<DiscoverPage />} />

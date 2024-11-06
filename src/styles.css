@@ -51,6 +51,10 @@ h1 {
   text-align: center;
   border-bottom: #dddddd 0.125rem solid;
   padding: 1rem 0;
+  background-color: var(--white);
+  margin: 0;
+  width: 100%;
+  /* position: -webkit-sticky; */
   /* line-height: 1.1; */
 }
 
@@ -251,11 +255,16 @@ nav a.active {
   /* animation: fadeIn 0.5s; */
   /* padding: 140px 2em 2em; */
   padding: 1rem;
+  max-width: 40rem;
+  margin: auto;
+  padding-bottom: 10rem;
+  /* justify-content: center; */
+
 }
 
 /* ---------- Container Styling ---------- */
 .container {
-  max-width: 700px;
+  /* max-width: 700px; */
   margin: auto;
 }
 
