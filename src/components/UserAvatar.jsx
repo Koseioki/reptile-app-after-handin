@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import placerholder from "../assets/img/user-placeholder.jpg";
+import placeholder from "../assets/img/user-placeholder.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function UserAvatar({ uid }) {
+    const navigate = useNavigate();
+
     const [user, setUser] = useState({
-        image: placerholder,
+        image: placeholder,
         name: "User's Name",
-        title: "User's Title"
+        // title: "User's Title"
     });
     const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/users/${uid}.json`;
 
@@ -18,9 +21,13 @@ export default function UserAvatar({ uid }) {
         getUser();
     }, [url]);
 
+    function handleClick() {
+        navigate(`/${uid}`);
+    }
+
     return (
-        <div className="avatar">
-            <img className="avatar-image" src={user.image || placerholder} alt={user.id} />
+        <div className="avatar" onClick={handleClick}>
+            <img className="avatar-image" src={user.image || placeholder} alt={user.id} />
             <span>
                 <h3>@{user.name}</h3>
                 {/* <p>{user.title}</p> */}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import UserAvatar from "../components/UserAvatar";
 import CommentForm from "../components/CommentForm";
@@ -8,7 +8,6 @@ export default function PostDetailPage() {
   const [post, setPost] = useState();
   const [comments, setComments] = useState([]);
   const params = useParams();
-  const navigate = useNavigate();
   const postUrl = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/posts/${params.postId}.json`;
   const commentsBaseUrl = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/comments/`;
 

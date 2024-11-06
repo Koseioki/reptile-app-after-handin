@@ -368,12 +368,12 @@ nav a.active {
 .avatar {
   display: flex;
   align-items: center;
-  margin: 0 0 1.2em;
+  /* margin: 0 0 1.2rem; */
   text-align: left;
 }
 
 .avatar span {
-  margin: 0 0 0 1em;
+  margin: 0 0 0 1rem;
 }
 
 .avatar h3,
@@ -389,6 +389,15 @@ nav a.active {
   aspect-ratio: 1/1;
   /* max-width: 50px;
   max-height: 50px; */
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-image{
+  width: 100%;
+  max-width: 5rem;
+  aspect-ratio: 1/1;
+
   object-fit: cover;
   border-radius: 50%;
 }

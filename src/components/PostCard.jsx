@@ -31,8 +31,11 @@ export default function PostCard({ post }) {
   }
 
   return (
-    <article onClick={handleClick} className="post-card drop-shadow">
+    <article className="post-card drop-shadow">
       <UserAvatar uid={post.uid} />
+
+      {/* Kosei: this is the part actually clickable */}
+      <div onClick={handleClick}>
       <p>{new Date(post.createdAt).toLocaleDateString()}</p>
       <a href={`/posts/${post.id}/edit`}>Edit this post</a>
       <p>{post.caption}</p>
@@ -59,6 +62,7 @@ export default function PostCard({ post }) {
             {commentsCount}
           </span>
         </div>
+      </div>
       </div>
     </article>
   );
