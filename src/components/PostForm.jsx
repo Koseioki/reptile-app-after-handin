@@ -17,8 +17,9 @@ export default function PostForm({ savePost, post }) {
       setCaption(post.caption);
       setImage(post.image);
       setAltText(post.altText);
-      setTags(post.tags);
-      setReptiles(post.reptiles);
+      setTags(post.tags ? post.tags[1] : ""); 
+      // Kosei: this reptile drop-down is not working (sad)
+      setReptiles(post.reptiles ? post.reptiles[0] : ""); 
     }
   }, [post]); // useEffect is called every time post changes.
 
@@ -50,8 +51,8 @@ export default function PostForm({ savePost, post }) {
       image: image,
       altText: altText,
       tags: {
-        0:reptiles,
-        1:tags
+        0: reptiles,
+        1: tags
       },
       createdAt: Date.now()
     };
@@ -79,13 +80,12 @@ export default function PostForm({ savePost, post }) {
         <option value="geckos">Geckos</option>
         <option value="lizards">Lizards</option>
         <option value="other-reptiles">Other Reptiles</option>
-        
+
       </select>
 
       <label htmlFor="tags">Tags</label>
       <select id="tags" name="tags" value={tags} onChange={e => setTags(e.target.value)}>
-      <option value="no-tags">no-tags</option>
-
+        <option value="no-tags">no-tags</option>
         <option value="for-fun">for-fun</option>
         <option value="genetics">genetics</option>
         <option value="hatchlings">hatchlings</option>
