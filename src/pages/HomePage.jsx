@@ -97,9 +97,15 @@ export default function HomePage() {
       <NewReptileOwnerPopup />
       <section className="timeline-container">
         <section className="timeline">
-          {filteredPosts.map((post) => (
+          {/* {filteredPosts.map((post) => (
             <PostCard post={post} key={post.id} />
-          ))}
+          ))} */}
+          {filteredPosts
+  .slice()
+  .sort((a, b) => b.createdAt - a.createdAt)
+  .map((post) => (
+    <PostCard post={post} key={post.id} />
+  ))}
         </section>
       </section>
       {/* FeedbackForm has been moved to InfoPage */}

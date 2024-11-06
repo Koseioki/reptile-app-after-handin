@@ -57,11 +57,11 @@ export default function PostForm({ savePost, post }) {
       createdAt: Date.now()
     };
 
-
     const validForm = formData.caption && formData.image && formData.altText; // will return false if one of the properties doesn't have a value
     if (validForm) {
       // if all fields/ properties are filled, then call savePost
       savePost(formData);
+      alert("Your post has been shared");
     } else {
       // if not, set errorMessage state.
       setErrorMessage("Please, fill in all fields.");
