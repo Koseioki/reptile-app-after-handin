@@ -1,13 +1,14 @@
-// InfoPage.js
+// DiscoverPage.jsx
 import React from "react";
-import { auth } from "../firebase-config";
+import VetLinkCard from "../components/VetLinkCard";
 
 const DiscoverPage = () => {
   return (
     <section className="page" id="discover-page">
       <h1>Discover</h1>
-      {/* component */}
-      <nameOfComponent /> //to change
+      <div className="resource-section">
+        <VetLinkCard />
+      </div>
     </section>
   );
 };

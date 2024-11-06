@@ -13,7 +13,7 @@ import UpdatePage from "./pages/UpdatePage";
 import PostDetailPage from "./pages/PostDetailPage";
 import InfoPage from "./pages/InfoPage";
 import DiscoverPage from "./pages/DiscoverPage";
-
+import VetsPage from "./pages/VetsPage";
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
