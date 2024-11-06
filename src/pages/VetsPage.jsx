@@ -6,10 +6,11 @@ export default function VetsPage() {
 
   useEffect(() => {
     async function getVets() {
-      const url = "https://your-api-endpoint/vets.json"; // to be replaced
+      const url = "https://reptile-app-ebad6-default-rtdb.firebaseio.com/vets.json";
       const response = await fetch(url);
       const data = await response.json();
-      setVets(data);
+      const vetsArray = data ? Object.keys(data).map((key) => ({ id: key, ...data[key] })) : [];
+      setVets(vetsArray);
     }
     getVets();
   }, []);
@@ -18,11 +19,11 @@ export default function VetsPage() {
     <div className="vets-page">
       <h1>Reliable Nearby Vets</h1>
       <ul>
-        {vets.map((vet, index) => (
-          <li key={index}>
+        {vets.map((vet) => (
+          <li key={vet.id}>
             <h2>{vet.name}</h2>
-            <p>{vet.address}</p>
-            <p>{vet.phone}</p>
+            <p>{vet.location}</p>
+            <p>{vet.specialisation}</p>
           </li>
         ))}
       </ul>

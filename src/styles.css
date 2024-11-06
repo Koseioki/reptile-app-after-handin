@@ -318,6 +318,7 @@ nav a.active {
 .post-card {
   /* box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25); */
   padding: 1rem;
+  margin-bottom: 2rem; /* Spacing between the cards */
   background-color: var(--white);
   /* transition: 0.5s; */
   /* animation: fadeIn 0.5s; */

@@ -7,7 +7,6 @@ const DiscoverPage = () => {
     <section className="page" id="discover-page">
       <h1>Discover</h1>
       <div className="resource-section">
-        <VetLinkCard />
       </div>
     </section>
   );
