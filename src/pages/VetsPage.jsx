@@ -1,6 +1,7 @@
 // VetsPage.jsx
 import { useEffect, useState } from "react";
 
+
 export default function VetsPage() {
   const [vets, setVets] = useState([]);
 

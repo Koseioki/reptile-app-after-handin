@@ -44,6 +44,7 @@ export default function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/info" element={<InfoPage />} />
         <Route path="/discover" element={<DiscoverPage />} />
+        <Route path="/vets" element={<VetsPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
