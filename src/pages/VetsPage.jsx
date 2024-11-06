@@ -1,7 +1,6 @@
 // VetsPage.jsx
 import { useEffect, useState } from "react";
 
-
 export default function VetsPage() {
   const [vets, setVets] = useState([]);
 
@@ -19,15 +18,23 @@ export default function VetsPage() {
   return (
     <div className="vets-page">
       <h1>Reliable Nearby Vets</h1>
-      <ul>
+      <div className="vets-list">
         {vets.map((vet) => (
-          <li key={vet.id}>
+          <div key={vet.id} className="vet-card">
+            <img src={vet.image} alt={vet.name} className="vet-image" />
             <h2>{vet.name}</h2>
-            <p>{vet.location}</p>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(vet.location)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="vet-location"
+            >
+              {vet.location}
+            </a>
             <p>{vet.specialisation}</p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

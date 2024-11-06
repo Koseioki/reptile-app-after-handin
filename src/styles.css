@@ -503,3 +503,57 @@ input[type="text"] {
 .skip-button:focus{
   top: 0rem;
 }
+
+
+/* Connor doing vets page styling thing */
+
+.vets-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh; /* Ensures the container takes the full height of the viewport */
+}
+
+.vets-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    margin-top: 2rem;
+}
+
+.vet-card {
+    width: 20rem; 
+    height: auto; 
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.vet-card:hover {
+    transform: translateY(-0.5rem); /* Slightly press the card */
+    background-color: var(--light-green); /* Apply the light green background on hover */
+}
+
+.vet-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.vet-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem; /* Smaller gap between location and specialisation */
+}
+
+.vet-card p {
+    margin: 0.5rem 0; /* General margin for paragraphs */
+}
