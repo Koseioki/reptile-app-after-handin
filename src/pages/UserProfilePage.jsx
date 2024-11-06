@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import UserAvatar from '../components/UserAvatar';
+// import UserAvatar from '../components/UserAvatar';
 import UserPosts from '../components/UserPosts';
 
 export default function UserProfilePage() {
