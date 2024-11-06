@@ -10,8 +10,8 @@ export default function VetLinkCard() {
   }
 
   return (
-    <div className="vet-link-card" onClick={handleClick}>
-      <h2>VETS</h2>
+    <div className="post-card" onClick={handleClick}>
+      <h2>Verified Vets</h2>
       <p>Find reliable nearby vets for your reptile friends.</p>
     </div>
   );
