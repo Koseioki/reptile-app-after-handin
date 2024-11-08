@@ -100,7 +100,7 @@ export default function PostDetailPage() {
 }
 
 
-
+// Archive
 // const [post, setPost] = useState();
 // const [comments, setComments] = useState([]);
 // const params = useParams();
