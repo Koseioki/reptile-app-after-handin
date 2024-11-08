@@ -566,3 +566,68 @@ input[type="text"] {
 .vet-card p {
     margin: 0.5rem 0; /* General margin for paragraphs */
 }
+
+
+/* Vet page styling Connie */
+
+.vet-details-page {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.vet-details-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.vet-details-page img.vet-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.vet-details-page .vet-details-section {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.vet-details-page p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.vet-details-page p strong {
+  font-weight: bold;
+}
+
+.vet-details-page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.vet-details-page ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.vet-details-page a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.vet-details-page a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 1rem 0;
+}

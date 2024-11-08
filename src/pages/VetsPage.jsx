@@ -1,5 +1,7 @@
 // VetsPage.jsx
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export default function VetsPage() {
   const [vets, setVets] = useState([]);
@@ -32,6 +34,9 @@ export default function VetsPage() {
               {vet.location}
             </a>
             <p>{vet.specialisation}</p>
+            <Link to={`/vets/${vet.id}`} className="vet-details-link">
+              More Details
+            </Link>
           </div>
         ))}
       </div>
