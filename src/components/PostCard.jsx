@@ -42,6 +42,10 @@ export default function PostCard({ post }) {
     navigate(`/posts/${post.id}`);
   }
 
+  function handleEdit() {
+    navigate(`/posts/${post.id}/edit`);
+  }
+
   return (
     <article className="post-card drop-shadow">
       <UserAvatar uid={post.uid} />
@@ -49,7 +53,7 @@ export default function PostCard({ post }) {
       {/* Kosei: this is the part actually clickable */}
       <div onClick={handleClick}>
         <p>{new Date(post.createdAt).toLocaleDateString()}</p>
-        <a href={`/posts/${post.id}/edit`}>Edit this post</a>
+        
         <p>{post.caption}</p>
         <img className="post-image" src={post.image} alt={post.altText} />
       </div>
@@ -78,7 +82,7 @@ export default function PostCard({ post }) {
           </span>
         </div>
       </div>
-
+      <button onClick={handleEdit}>Edit this post</button>
     </article>
   );
 }
