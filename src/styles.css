@@ -185,10 +185,11 @@ form {
 nav {
   z-index: 100;
   background-color: var(--green);
+  padding: 0.5rem 0;
   /* display: grid; */
   /* position: fixed; */
   /* bottom: 0; */
-  padding: 1em 2em;
+  /* padding: 1em 2em; */
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* gap: 1em; */
   text-align: center;
@@ -223,9 +224,14 @@ nav {
 
 nav a {
   display: inline-block;
+  /* justify-content: space-between; */
+  width: 30%;
+  max-width: 4rem;
+  aspect-ratio: 1/1;
+  /* background-color: red; */
   color: var(--white);
   text-align: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   text-decoration: none;
   /* letter-spacing: 0.1em; */
   /* text-transform: uppercase; */
