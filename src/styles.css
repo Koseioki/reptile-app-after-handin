@@ -225,7 +225,7 @@ nav a {
   display: inline-block;
   color: var(--white);
   text-align: center;
-  padding: 20px 16px;
+  padding: 0.5rem 1rem;
   text-decoration: none;
   /* letter-spacing: 0.1em; */
   /* text-transform: uppercase; */
@@ -244,17 +244,22 @@ nav a {
 }
 
 .nav-dual-coding img {
-  margin-bottom: 5px; /* Adjust the spacing between the icon and the text */
+  margin-bottom: 0.25rem; /* Adjust the spacing between the icon and the text */
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
+
 nav a:hover {
-  background-color: var(--light-green);
+  /* background-color: var(--light-green); */
+  outline: 0.125rem solid var(--white);
   color: var(--white);
 }
 
 nav a.active {
-  background-color: var(--light-green);
-  color: var(--green);
+  border-bottom: 0.25rem solid var(--white);
+  color: var(--white);
+ 
 }
 
 /* ---------- Page Styling ---------- */
