@@ -36,6 +36,9 @@ export default function CommentForm({postId}) {
                     "Content-Type": "application/json"
                 }
             });
+            // Kosei: Reload the page to show the new comment
+
+            window.location.reload();
 
         } else {
             console.log("Sorry, something went wrong");

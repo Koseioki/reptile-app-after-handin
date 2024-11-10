@@ -36,34 +36,32 @@ export default function PostDetailPage() {
 
   // Kosei: Delete comment from the both comments and posts trees
   async function handleDelete(comment) {
-    try {
-      // Delete the comment from the comments node
-      await fetch(`${commentsBaseUrl}${comment.key}.json`, {
-        method: "DELETE",
-      });
-
-      //  Update the post's comments object
-      const updatedComments = { ...post.comments };
-      delete updatedComments[comment.key];  // Remove the comment ID from the post's comments list
-      
-      await fetch(postUrl, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ comments: updatedComments }),
-      });
-
-      // Update the local state to reflect the deletion??
-      setComments(comments.filter(c => c.key !== comment.key));
-      setPost(prevPost => ({
-        ...prevPost,
-        comments: updatedComments
-      }));
-      
-    } catch (error) {
-      console.error("Error deleting comment:", error);
+    if (window.confirm("Are you sure you want to delete this comment?")) {
+      try {
+        // Delete from comments tree
+        await fetch(`${commentsBaseUrl}${comment.key}.json`, { method: "DELETE" });
+        
+        // Remove comment ID from post's comment list
+        const updatedComments = { ...post.comments };
+        delete updatedComments[comment.key];
+        
+        // Update the post
+        await fetch(postUrl, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ comments: updatedComments })
+        });
+  
+        // Update local state to remove the deleted comment
+        setComments(prevComments => prevComments.filter(c => c.key !== comment.key));
+        setPost(prevPost => ({ ...prevPost, comments: updatedComments }));
+  
+      } catch (error) {
+        console.error("Error deleting comment:", error);
+      }
     }
+  
+  
   }
   
   return (
