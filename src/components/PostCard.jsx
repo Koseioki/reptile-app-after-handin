@@ -16,7 +16,7 @@ export default function PostCard({ post }) {
   // const url = `https://reptile-app-ebad6-default-rtdb.firebaseio.com/users/${auth.currentUser?.uid}.json`;
   // const [likesCount, setLikesCount] = useState(0);
 
-  // Kosei: comment counting (actually we didn't have to use a whole new function for this)
+  // Kosei: comment counting
   const commentsCount = post.comments ? Object.keys(post.comments).length : 0;
   // useEffect(() => {
   //   const db = getDatabase();
