@@ -1,6 +1,5 @@
-// DiscoverPage.jsx
+//Consuelo
 import React from "react";
-import VetLinkCard from "../components/VetLinkCard";
 
 const DiscoverPage = () => {
   return (

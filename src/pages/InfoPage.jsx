@@ -1,4 +1,4 @@
-// InfoPage.js
+//Consuelo and Connor
 import React from "react";
 import FeedbackForm from "../components/FeedbackForm";
 import StepByStepGuideCard from "../components/StepByStepGuideCard";

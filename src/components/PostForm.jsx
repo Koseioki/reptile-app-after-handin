@@ -1,3 +1,4 @@
+//Kosei
 import { useEffect, useRef, useState } from "react";
 
 export default function PostForm({ savePost, post }) {

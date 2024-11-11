@@ -1,3 +1,4 @@
+//Connor and Kosei
 // import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { getDatabase, ref, onValue } from "firebase/database";

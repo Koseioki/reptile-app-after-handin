@@ -1,20 +1,22 @@
-// FeedbackForm.js
+// Consuelo
 import React, { useState } from "react";
 import { auth } from "../firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+//function to submit feedback
 const FeedbackForm = () => {
   const [feedback, setFeedback] = useState("");
   const [user] = useAuthState(auth);
   const [message, setMessage] = useState("");
 
+  // Asynchronous function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (feedback.trim() !== "") {
       try {
-        const feedbackData = {
+        const feedbackData = { //content for data
           feedback: feedback.trim(),
-          userId: user ? user.uid : "Anonymous",
+          userId: user ? user.uid : "Anonymous", //anonymous if user is not logged in
           createdAt: new Date().toISOString(),
         };
 
@@ -30,9 +32,9 @@ const FeedbackForm = () => {
 
         if (response.ok) {
           setFeedback(""); // Clear the textarea after successful submission
-          setMessage("Thank you for your feedback!");
+          setMessage("Thank you for your feedback!"); //success
         } else {
-          setMessage("Failed to submit feedback. Please try again.");
+          setMessage("Failed to submit feedback. Please try again."); //error
         }
       } catch (error) {
         console.error("Error submitting feedback:", error);

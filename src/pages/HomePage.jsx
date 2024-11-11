@@ -1,4 +1,4 @@
-// HomePage.js
+//Consuelo, Connor and Kosei
 import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import NewReptileOwnerPopup from "../components/NewReptileOwnerPopup";

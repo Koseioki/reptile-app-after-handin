@@ -1,4 +1,4 @@
-// ProfilePage.js
+//Consuelo and Connor
 import { signOut } from "firebase/auth";
 import { useEffect, useRef, useState } from "react";
 import UserPosts from "../components/UserPosts";

@@ -1,6 +1,6 @@
-// import React from "react";
 import { useNavigate } from "react-router-dom";
 
+//Consuelo
 export default function PartnersCard() {
   const navigate = useNavigate();
 

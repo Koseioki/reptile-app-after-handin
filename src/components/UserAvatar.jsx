@@ -1,3 +1,4 @@
+//Kosei
 import { useState, useEffect } from "react";
 import placeholder from "../assets/img/user-placeholder.jpg";
 import { useNavigate } from "react-router-dom";

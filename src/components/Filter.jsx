@@ -1,5 +1,7 @@
+//Consuelo
 import React from "react";
 
+//dropdown filter
 const Filter = ({ label, options, onFilterChange }) => {
   const handleChange = (event) => {
     onFilterChange(event.target.value);

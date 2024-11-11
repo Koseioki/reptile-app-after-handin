@@ -1,3 +1,4 @@
+//Consuelo, Connor and Kosei
 import { onAuthStateChanged } from "@firebase/auth";
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -22,7 +23,7 @@ export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
 
   useEffect(() => {
-    onAuthStateChanged(auth, user => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         //user is authenticated / signed in
         setIsAuth(true); // set isAuth to true
@@ -52,7 +53,6 @@ export default function App() {
         <Route path="/partners" element={<PartnersPage />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/:userId" element={<UserProfilePage />} />
-
       </Routes>
     </>
   );
