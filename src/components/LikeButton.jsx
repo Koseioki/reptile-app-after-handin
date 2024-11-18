@@ -58,7 +58,16 @@ export default function LikeButton({ post, yourUserId }) {
     }
 
     return (
-        <span onClick={handleLike} style={{ cursor: "pointer" }}>
+        <span
+        onClick={handleLike}
+        tabIndex="0"
+
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleLike();
+          }
+        }}
+        style={{ cursor: "pointer" }}>
             <img
                 src={heart}
                 className="icon"

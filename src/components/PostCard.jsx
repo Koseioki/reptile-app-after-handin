@@ -48,13 +48,24 @@ export default function PostCard({ post }) {
   }
 
   return (
-    <article className="post-card drop-shadow">
+    // Kosei: if enter is pressed, it will navigate to the post page
+    <article
+
+      className="post-card drop-shadow">
       <UserAvatar uid={post.uid} />
 
-      {/* Kosei: this is the part actually clickable */}
-      <div onClick={handleClick}>
+      {/*  Kosei: this part is clickable */}
+      <div
+        onClick={handleClick}
+        tabIndex="0"
+
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleClick();
+          }
+        }}>
         <p>{new Date(post.createdAt).toLocaleDateString()}</p>
-        
+
         <p>{post.caption}</p>
         <img className="post-image" src={post.image} alt={post.altText} />
       </div>
@@ -77,8 +88,18 @@ export default function PostCard({ post }) {
             {likesCount} */}
             <LikeButton post={post} yourUserId={yourUserId} />
           </span>
-          <span>
-            <img onClick={handleClick} src={commentIcon} alt="Comments" className="icon" />{" "}
+          <span onClick={handleClick}
+            tabIndex="0"
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                handleClick();
+              }
+            }}>
+            <img
+              // onClick={handleClick}
+              src={commentIcon}
+              alt="Comments"
+              className="icon" />{" "}
             {commentsCount}
           </span>
         </div>

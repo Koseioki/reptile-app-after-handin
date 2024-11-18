@@ -27,7 +27,17 @@ export default function UserAvatar({ uid }) {
     }
 
     return (
-        <div className="avatar" onClick={handleClick}>
+        <div
+        className="avatar"
+        tabIndex="0"
+        onClick={handleClick}
+        // run handleClick if enter is pressed
+        onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleClick();
+            }
+          }}
+        >
             <img className="avatar-image" src={user.image || placeholder} alt={user.id} />
             <span>
                 <h3>@{user.name}</h3>
