@@ -16,31 +16,31 @@ export default function Nav() {
       <nav>
         <NavLink to="/">
           <div className="nav-dual-coding">
-            <img src={home} alt="Home Icon" />
+            <img src={home} alt="" />
             <span>Home</span>
           </div>
         </NavLink>
         <NavLink to="/discover">
           <div className="nav-dual-coding">
-            <img src={discover} alt="Discover Icon" />
+            <img src={discover} alt="" />
             <span>Discover</span>
           </div>
         </NavLink>
         <NavLink to="/create">
           <div className="nav-dual-coding">
-            <img src={post} alt="Post Icon" />
+            <img src={post} alt="" />
             <span>Post</span>
           </div>
         </NavLink>
         <NavLink to="/info">
           <div className="nav-dual-coding">
-            <img src={info} alt="Info Icon" />
+            <img src={info} alt="" />
             <span>Info</span>
           </div>
         </NavLink>
         <NavLink to="/profile">
           <div className="nav-dual-coding">
-            <img src={profile} alt="Profile Icon" />
+            <img src={profile} alt="" />
             <span>Profile</span>
           </div>
         </NavLink>

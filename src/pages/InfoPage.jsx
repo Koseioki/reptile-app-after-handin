@@ -8,7 +8,7 @@ import { auth } from "../firebase-config";
 
 const InfoPage = () => {
   return (
-    <section className="page" id="info-page">
+    <section className="page" id="info-page main-content">
       <h1>Useful Information</h1>
       <StepByStepGuideCard />
       <VetLinkCard />

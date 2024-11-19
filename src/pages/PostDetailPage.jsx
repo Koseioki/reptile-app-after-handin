@@ -66,7 +66,7 @@ export default function PostDetailPage() {
   }
   
   return (
-    <section className="page">
+    <section className="page main-content">
       <h1>Home</h1>
       <section className="timeline-container">
         <section className="timeline">

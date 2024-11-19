@@ -47,6 +47,8 @@ export default function PostCard({ post }) {
     navigate(`/posts/${post.id}/edit`);
   }
 
+  
+
   return (
     // Kosei: if enter is pressed, it will navigate to the post page
     <article
@@ -58,7 +60,8 @@ export default function PostCard({ post }) {
       <div
         onClick={handleClick}
         tabIndex="0"
-
+        role="link"
+        aria-label={post.caption}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             handleClick();
@@ -104,7 +107,11 @@ export default function PostCard({ post }) {
           </span>
         </div>
       </div>
-      <button onClick={handleEdit}>Edit this post</button>
+      <button
+      onClick={handleEdit}
+      role="link"
+      aria-label={`Edit post ${post.caption}`}
+      >Edit this post</button>
     </article>
   );
 }

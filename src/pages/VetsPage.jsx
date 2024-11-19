@@ -18,7 +18,7 @@ export default function VetsPage() {
   }, []);
 
   return (
-    <div className="vets-page">
+    <div className="vets-page" id="main-content">
       <h1>Reliable Nearby Vets</h1>
       <div className="vets-list">
         {vets.map((vet) => (

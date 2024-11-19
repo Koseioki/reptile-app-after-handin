@@ -21,7 +21,7 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div className="vets-page">
+    <div className="vets-page main-content">
       <h1>Our Trusted Partners</h1>
       <div className="vets-list">
         {partners.map((partner) => (

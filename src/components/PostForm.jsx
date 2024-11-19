@@ -121,6 +121,13 @@ export default function PostForm({ savePost, post }) {
           "https://placehold.co/600x400?text=Error+loading+image")
         }
         onClick={() => fileInputRef.current.click()}
+        // Kosei: the same thing as above, but with enter key
+        onKeyDown={e => {
+          if (e.key === "Enter") {
+            fileInputRef.current.click();
+          }
+        }}
+        tabIndex={0}
       />
       <input
         id="image-file"

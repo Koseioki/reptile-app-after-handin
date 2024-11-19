@@ -38,7 +38,7 @@ export default function UserProfilePage() {
     if (!user) return <p>No user found.</p>;
 
     return (
-        <section className="page">
+        <section className="page main-content">
             <h1>@{user.name}</h1>
 
             <div className="avatar">

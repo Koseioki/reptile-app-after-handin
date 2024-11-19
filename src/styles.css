@@ -71,11 +71,20 @@ h3 {
   line-height: ;
 } */
 
+/* ---------- Kosei: A11y focus states ---------- */
+:focus {
+  outline: 0.25rem var(--text) solid;
+  background-color: lightyellow;
+  outline-offset: 0.5rem;
+  border-radius: 0.75rem;
+  color: var(--text);
+} 
+
 /* ---------- Link Styling ---------- */
 a {
   color: var(--green);
   text-decoration: none;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
 
 a:hover {
@@ -104,7 +113,7 @@ button {
   cursor: pointer;
   padding: 1em 2em;
   background-color: var(--green);
-  transition: 0.5s;
+  /* transition: 0.5s; */
   width: 100%;
 }
 
@@ -161,7 +170,7 @@ form {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
   padding: 1.5em;
   background-color: var(--white);
-  transition: 0.5s;
+  /* transition: 0.5s; */
   animation: fadeIn 0.5s;
   border-radius: 8px;
 }
@@ -195,7 +204,7 @@ nav {
   text-align: center;
 }
 
-/* Kosei: responsive nav */
+/* ---------- Kosei: responsive nav ---------- */
 @media (min-width: 40rem) {
   nav {
     top: 0;
@@ -258,14 +267,20 @@ nav a {
 
 nav a:hover {
   /* background-color: var(--light-green); */
-  outline: 0.125rem solid var(--white);
+  /* outline: 0.125rem solid var(--white); */
   color: var(--white);
 }
 
 nav a.active {
   border-bottom: 0.25rem solid var(--white);
   color: var(--white);
- 
+}
+
+nav a:focus {
+  outline: 0.125rem solid var(--white);
+  outline-offset: 0;
+  color: var(--white);
+  background-color: var(--green);
 }
 
 /* ---------- Page Styling ---------- */

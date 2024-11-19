@@ -24,7 +24,7 @@ export default function VetDetailsPage() {
   const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   return (
-    <div className="vet-details-page">
+    <div className="vet-details-page" id="main-content">
       <h1>{vet.name}</h1>
       <img src={vet.image} alt={vet.name} className="vet-image" />
       <div className="vet-details-section">
