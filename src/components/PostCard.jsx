@@ -61,7 +61,7 @@ export default function PostCard({ post }) {
         onClick={handleClick}
         tabIndex="0"
         role="link"
-        aria-label={post.caption}
+        // aria-label={post.caption}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             handleClick();

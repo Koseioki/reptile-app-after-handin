@@ -48,13 +48,31 @@ export default function NewReptileOwnerPopup() {
 
     return (
         <aside className="popup drop-shadow">
-            <span onClick={handleClick}>
+            <span
+            onClick={handleClick}
+            //samething when pressed enter
+            onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                    handleClick();
+                }
+            }}
+            tabIndex={0}
+            >
                 <h2>New reptile owner?</h2>
                 <p>
                     Check out the step-by-step guide to get your journey started!
                 </p>
             </span>
-            <span onClick={handleDelete}>
+            <span
+            onClick={handleDelete}
+            //samething when pressed enter
+            onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                    handleDelete();
+                }
+            }}
+            tabIndex={0}
+            >
                 <img src={cross} alt="" />
             </span>
         </aside>

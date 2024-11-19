@@ -38,7 +38,7 @@ export default function UserAvatar({ uid }) {
             }
           }}
         >
-            <img className="avatar-image" src={user.image || placeholder} alt={user.id} />
+            <img className="avatar-image" src={user.image || placeholder} alt="" />
             <span>
                 <h3>@{user.name}</h3>
                 {/* <p>{user.title}</p> */}
